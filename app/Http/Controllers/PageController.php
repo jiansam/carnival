@@ -12,6 +12,10 @@ class PageController extends Controller
 
     public function index(Request $req)
     {
+        if ($req->openExternalBrowser == null) {
+            return redirect(url("/index?openExternalBrowser=1"));
+        }
+
         return view("index");
     }
 }
