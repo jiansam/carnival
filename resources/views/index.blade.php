@@ -15,6 +15,7 @@
     let scanner = new Instascan.Scanner({
       continuous: true, // 連續掃描
       video: document.getElementById('preview'), // 預覽
+      backgroundScan: true,
       facingMode: {
         exact: "environment"
       }
