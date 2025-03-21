@@ -1,39 +1,54 @@
-<html>
+<!DOCTYPE html>
+<html lang="zh-tw">
+
 <head>
-    <title>Html-Qrcode Demo</title>
-<body>
-    <div id="qr-reader" style="width:500px"></div>
-    <div id="qr-reader-results"></div>
-</body>
-<script src="/carnival/public/js/html5-qrcode.min.js"></script>
-<script>
-    function docReady(fn) {
-        // see if DOM is already available
-        if (document.readyState === "complete"
-            || document.readyState === "interactive") {
-            // call on next available tick
-            setTimeout(fn, 1);
-        } else {
-            document.addEventListener("DOMContentLoaded", fn);
-        }
-    }
-
-    docReady(function () {
-        var resultContainer = document.getElementById('qr-reader-results');
-        var lastResult, countResults = 0;
-        function onScanSuccess(decodedText, decodedResult) {
-            if (decodedText !== lastResult) {
-                ++countResults;
-                lastResult = decodedText;
-                // Handle on success condition with the decoded message.
-                console.log(`Scan result ${decodedText}`, decodedResult);
-            }
-        }
-
-        var html5QrcodeScanner = new Html5QrcodeScanner(
-            "qr-reader", { fps: 10, qrbox: 250 });
-        html5QrcodeScanner.render(onScanSuccess);
-    });
-</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>instascan：純前端掃描 QR Code</title>
+  <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
 </head>
+
+<body>
+  <video id="preview"></video>
+  <script type="text/javascript">
+    let scanner = new Instascan.Scanner({
+      continuous: true, // 連續掃描
+      video: document.getElementById('preview'), // 預覽
+      facingMode: {
+        exact: "environment"
+      }
+    });
+    scanner.addListener('scan', function (content) {
+
+      console.log(content);
+      getConfirmation();
+
+      function getConfirmation() {
+        var retVal = confirm("掃描結果：" + content); // 掃描結果顯示
+        if (retVal == true) {
+          var checkurl = /^((https?|http?|file):\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/; // 檢查是否為網址
+          if (checkurl.test(content)) {
+            window.open(content, "_self"); // 開啟網址
+          }
+          return true;
+        } else {
+          return false;
+        }
+      }
+
+
+    });
+    Instascan.Camera.getCameras().then(function (cameras) {
+      if (cameras.length > 0) {
+        scanner.start(cameras[1]); // [0] 前鏡頭 [1] 後鏡頭
+      } else {
+        console.error('沒有找到相機');
+      }
+    }).catch(function (e) {
+      console.error(e);
+    });
+  </script>
+</body>
+
 </html>
