@@ -1,11 +1,13 @@
 <html>
 <head>
     <title>Html-Qrcode Demo</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script src="/carnival/public/js/html5-qrcode.min.js"></script>
 <body>
-    <div id="qr-reader" style="width:500px"></div>
+    <div id="qr-reader" ></div>
     <div id="qr-reader-results"></div>
 </body>
-<script src="/carnival/public/js/html5-qrcode.min.js"></script>
+
 <script>
     function docReady(fn) {
         // see if DOM is already available
@@ -19,20 +21,18 @@
     }
 
     docReady(function () {
-        var resultContainer = document.getElementById('qr-reader-results');
-        var lastResult, countResults = 0;
-        function onScanSuccess(decodedText, decodedResult) {
-            if (decodedText !== lastResult) {
-                ++countResults;
-                lastResult = decodedText;
-                // Handle on success condition with the decoded message.
-                console.log(`Scan result ${decodedText}`, decodedResult);
-            }
-        }
+        const html5QrCode = new Html5Qrcode("qr-reader");
 
-        var html5QrcodeScanner = new Html5Qrcode (
-            "qr-reader", { fps: 10, qrbox: 250 });
-        html5QrcodeScanner.render(onScanSuccess);
+		const qrCodeSuccessCallback = (decodedText, decodedResult) => {
+			html5QrCode.stop();
+			alert("scan text :" + decodedText);
+			//$("#qr-reader-results").html("scan text :" + decodedText);
+
+		};
+		const config = { fps: 10, qrbox: { width: 500, height: 400 } };
+
+		// If you want to prefer front camera
+		html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
     });
 </script>
 </head>
