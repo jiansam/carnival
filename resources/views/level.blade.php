@@ -37,6 +37,8 @@
             <img src="/carnival/public/img/bg-level.jpg" alt="">
 
             <section>
+
+               <div id="qr-reader" ></div>
                 <div class="list">
                     <ul>
                         <li id="no1" {{$sign->no1 ? "class=disabled" :""}}><img src="/carnival/public/img/list-1.png"></li>
@@ -56,7 +58,7 @@
         <div class="popUp" >
             <div class="popUp--container">
                 <h3>請掃描 QRCode</h3>
-                 <div id="qr-reader" ></div>
+
 			     <button class="btn">確定</button>
             </div>
         </div>
