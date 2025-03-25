@@ -4,12 +4,28 @@ $('#hamburger-button').click(function () {
     $('nav').toggleClass('clicked');
     $('html,body').toggleClass('hidden');
 });
+function docReady(fn) {
+      // see if DOM is already available
+      if (document.readyState === "complete"
+          || document.readyState === "interactive") {
+          // call on next available tick
+          setTimeout(fn, 1);
+      } else {
+          document.addEventListener("DOMContentLoaded", fn);
+      }
+  }
+var html5QrCode = null;
 
+docReady(function () {
+   html5QrCode = new Html5Qrcode("qr-reader");
+});
+ 
 const qrCodeSuccessCallback = (decodedText, decodedResult) => {
 	html5QrCode.stop();
-	alert("scan text :" + decodedText);
-	//$("#qr-reader-results").html("scan text :" + decodedText);
-
+	
+	$('.popUp').removeClass('active');
+		
+	alert("scan text :" + decodedText + decodedResult);
 };
 	
 //popUp
