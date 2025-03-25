@@ -87,10 +87,10 @@
             document.addEventListener("DOMContentLoaded", fn);
         }
     }
-    const html5QrCode = null;
+    var html5QrCode = null;
 
     docReady(function () {
-        const html5QrCode = new Html5Qrcode("qr-reader");
+        html5QrCode = new Html5Qrcode("qr-reader");
 
 
     });
