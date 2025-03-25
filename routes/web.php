@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('qrcode', function(){
-    return view("qrcode");
+    return view("index_qrcode");
 });
 
 Route::get('convert/{type}/{phone}', [PageController::class, "convert"]);
