@@ -80,6 +80,7 @@
     <script src="/carnival/public/js/html5-qrcode.min.js"></script>
     <script src="/carnival/public/js/animation.js"></script>
     <script type="text/javascript">
+
 		var phone ='{{$sign->phone}}';
 
 		function test(){
