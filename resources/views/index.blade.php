@@ -60,12 +60,15 @@
 
 			if (!phone) {
 				alert("請輸入手機!");
-				$("$phone").focus();
+				$("#phone").focus();
+				return;
 			}
 
 			const taiwanMobileRegex = /^09[1-9]\d{7}$/;
 			if (!taiwanMobileRegex.test(phone)) {
 				 alert("手機號碼格式錯誤！");
+				 $("#phone").focus();
+			     return;
 			}
 
 			$("#form").submit();
