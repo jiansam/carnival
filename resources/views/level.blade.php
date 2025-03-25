@@ -56,17 +56,20 @@
             </section>
         </main>
 
+        <!--
 		<div class="popUp_qrcode" >
             <div class="popUp--container">
 
         	</div>
          </div>
+         -->
+
         <!-- pop up -->
         <div class="popUp" >
             <div class="popUp--container">
                 <h3>請掃描 QRCode</h3>
 				<div id="qr-reader" ></div>
-			     <button class="btn">關閉</button>
+			    <button class="btn">關閉</button>
             </div>
         </div>
     </div>
@@ -77,23 +80,19 @@
     <script src="/carnival/public/js/html5-qrcode.min.js"></script>
     <script src="/carnival/public/js/animation.js"></script>
     <script type="text/javascript">
-    function docReady(fn) {
-        // see if DOM is already available
-        if (document.readyState === "complete"
-            || document.readyState === "interactive") {
-            // call on next available tick
-            setTimeout(fn, 1);
-        } else {
-            document.addEventListener("DOMContentLoaded", fn);
-        }
-    }
-    var html5QrCode = null;
+		var phone ='{{$sign->phone}}';
 
-    docReady(function () {
-        html5QrCode = new Html5Qrcode("qr-reader");
+		function test(){
+			var decodedText = "http://127.0.0.1/carnival/convert/12fbd294-cea7-7918-732c-331fef15e4b4";
+    		var url =decodedText+"/"+phone;
+
+    		console.log("scan url"+= url);
+
+    		$.post(url ,function(result) {
 
 
-    });
+    		});
+		}
     </script>
 </body>
 
