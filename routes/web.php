@@ -17,4 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('convert/{type}/{phone}', [PageController::class, "convert"]);
+Route::post('toLevel', [PageController::class, "toLevel"]);
+
 Route::get('index', [PageController::class, "index"]);
+Route::get('level', [PageController::class, "level"]);
+Route::get('programme', [PageController::class, "programme"]);
+Route::get('map', [PageController::class, "map"]);
+

@@ -1,10 +1,8 @@
 <?php
 
 use Dcat\Admin\Admin;
-use Dcat\Admin\Grid;
 use Dcat\Admin\Form;
-use Dcat\Admin\Grid\Filter;
-use Dcat\Admin\Show;
+use Dcat\Admin\Grid;
 
 /**
  * Dcat-admin - admin builder based on Laravel.
@@ -24,3 +22,46 @@ use Dcat\Admin\Show;
  * Admin::js('/packages/prettydocs/js/main.js');
  *
  */
+
+
+Admin::style('img { max-width: 100%; height: auto !important;}');
+
+Form::resolving(function (Form $form) {
+
+    $form->disableEditingCheck();
+
+    $form->disableCreatingCheck();
+
+    $form->disableViewCheck();
+
+    $form->tools(function (Form\Tools $tools) {
+
+        $tools->disableView();
+
+    });
+});
+
+
+
+    Grid::resolving(function (Grid $grid) {
+
+        //$grid->disableActions();
+
+        // $grid->disablePagination();
+
+        // $grid->disableCreateButton();
+
+        // $grid->disableFilter();
+
+        // $grid->disableRowSelector();
+
+        // $grid->disableColumnSelector();
+
+        // $grid->disableTools();
+
+        //$grid->disableExport();
+
+        $grid->actions(function (Grid\Displayers\Actions $actions) {
+            $actions->disableView();
+        });
+    });
