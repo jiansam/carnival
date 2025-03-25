@@ -66,7 +66,7 @@
             <div class="popUp--container">
                 <h3>請掃描 QRCode</h3>
 				<div id="qr-reader" ></div>
-			     <button class="btn">確定</button>
+			     <button class="btn">關閉</button>
             </div>
         </div>
     </div>
