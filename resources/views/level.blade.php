@@ -35,6 +35,7 @@
 
         <main class="level">
             <img src="/carnival/public/img/bg-level.jpg" alt="">
+             <div id="qr-reader" ></div>
             <section>
                 <div class="list">
                     <ul>
@@ -55,7 +56,7 @@
         <div class="popUp" >
             <div class="popUp--container">
                 <h3>請掃描 QRCode</h3>
-                <div id="qr-reader" ></div>
+
             </div>
         </div>
     </div>
