@@ -34,6 +34,8 @@
         </header>
 
         <main class="level">
+         	<div id="qr-reader" ></div>
+
             <img src="/carnival/public/img/bg-level.jpg" alt="">
 
             <section>
@@ -53,9 +55,10 @@
                 </div>
             </section>
         </main>
+
 		<div class="popUp_qrcode" >
             <div class="popUp--container">
-            	 <div id="qr-reader" ></div>
+
         	</div>
          </div>
         <!-- pop up -->

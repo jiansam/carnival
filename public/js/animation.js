@@ -19,18 +19,18 @@ $('.popUp button').click(function () {
 	
 	const html5QrCode = new Html5Qrcode("qr-reader");
 
-		const qrCodeSuccessCallback = (decodedText, decodedResult) => {
+	const qrCodeSuccessCallback = (decodedText, decodedResult) => {
 			html5QrCode.stop();
 			alert("scan text :" + decodedText);
 			
 			//$('.popUp_qrcode').removeClass('active');
-		};
+	};
 		
-		const config = { fps: 10, qrbox: { width: 500, height: 400 } };
+	const config = { fps: 10, qrbox: { width: 500, height: 400 } };
 
-		// If you want to prefer front camera test
-		html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
+	// If you want to prefer front camera test
+	html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
 		
 		
-		$('.popUp_qrcode').addClass('active');
+	//$('.popUp_qrcode').addClass('active');
 });
