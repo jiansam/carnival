@@ -84,7 +84,7 @@ class PageController extends Controller
 
             if (!$sign) {
                 $sign =  new Sign();
-                $sign->$req->phone;
+                $sign->phone = $req->phone;
                 $sign->save();
             }
 
