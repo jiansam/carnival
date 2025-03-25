@@ -38,7 +38,7 @@
 
             <section>
 
-               <div id="qr-reader" ></div>
+
                 <div class="list">
                     <ul>
                         <li id="no1" {{$sign->no1 ? "class=disabled" :""}}><img src="/carnival/public/img/list-1.png"></li>
@@ -53,7 +53,11 @@
                 </div>
             </section>
         </main>
-
+		<div class="popUp_qrcode" >
+            <div class="popUp--container">
+            	 <div id="qr-reader" ></div>
+        	</div>
+         </div>
         <!-- pop up -->
         <div class="popUp" >
             <div class="popUp--container">
@@ -66,8 +70,9 @@
 
     <!-- jQuery -->
     <script src="/carnival/public/js/jquery.min.js"></script>
-    <script src="/carnival/public/js/animation.js"></script>
+
     <script src="/carnival/public/js/html5-qrcode.min.js"></script>
+    <script src="/carnival/public/js/animation.js"></script>
     <script type="text/javascript">
 
     </script>
