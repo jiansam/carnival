@@ -25,7 +25,7 @@ const qrCodeSuccessCallback = (decodedText, decodedResult) => {
 	
 	$('.popUp').removeClass('active');
 		
-	alert("scan text :" + decodedText + decodedResult);
+	alert("scan text :" + decodedText + JSON.stringify(decodedResult);
 };
 	
 //popUp
