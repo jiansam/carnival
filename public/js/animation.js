@@ -129,11 +129,11 @@ function scan(no , decodedText){
 		    error: function (jqXHR, exception) {
 		        var msg = '';
 		        if (jqXHR.status === 0) {
-		            msg = 'Not connect.\n Verify Network.';
+		            msg = 'Not connect.\n Verify Network ' + decodedText;
 		        } else if (jqXHR.status == 404) {
-		            msg = '[404] 掃描伺服器網址錯誤!';
+		            msg = '[404] 掃描伺服器網址錯誤 ' + decodedText;
 		        } else if (jqXHR.status == 500) {
-		            msg = '[500] 伺服器錯誤!';
+		            msg = '[500] 伺服器錯誤 '+ jqXHR.responseText;
 		        } else if (exception === 'parsererror') {
 		            msg = 'Requested JSON parse failed.';
 		        } else if (exception === 'timeout') {
