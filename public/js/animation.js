@@ -79,6 +79,7 @@ $('.popUp button').click(function () {
 });
 
 
+
 function scan(no , decodedText){
 		
 	  //  var decodedText = "http://127.0.0.1/carnival/convert/12fbd294-cea7-7918-732c-331fef15e4b4"
@@ -93,7 +94,7 @@ function scan(no , decodedText){
 			}
 		} catch (e) {
 			
-			alert("掃碼網址錯誤!");
+			alert("掃碼網址錯誤 "+decodedText);
 			return;
 		}
 	  	
@@ -146,4 +147,4 @@ function scan(no , decodedText){
 		    }
 		});
 	}
-	//scan("test");
+	//scan(1, "http://www.393988.xyz/carnival/convert/12fbd294-cea7-7918-732c-331fef15e4b4");
