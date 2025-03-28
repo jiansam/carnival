@@ -6,7 +6,7 @@ $('#hamburger-button').click(function () {
 });
 
 var html5QrCode = null;
-
+var no = null;
 function docReady(fn) {
       // see if DOM is already available
       if (document.readyState === "complete"
@@ -60,6 +60,8 @@ $('#gift-button').click(function () {
 $('.list li img').click(function () {
 	//test();
 	
+	no =  $(this).attr("no");
+	
 	const config = { fps: 10, qrbox: { width: 500, height: 400 } };
 
 	html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
@@ -70,17 +72,36 @@ $('.list li img').click(function () {
 });
 
 $('.popUp button').click(function () {
+	no="";
 	html5QrCode.stop();
 	$('.popUp').removeClass('active');
 	//$('.popUp_qrcode').addClass('active');
 });
 
 
-function scan(decodedText){
+function scan(no , decodedText){
 		
 	  //  var decodedText = "http://127.0.0.1/carnival/convert/12fbd294-cea7-7918-732c-331fef15e4b4"
-		var url =decodedText+"/"+phone;
+		try {
+			var arr  = decodedText.split("/")
+			var code = arr[arr.length-1];
+			var index = code.charAt(0);
+			
+			if (index != no) {
+				alert("掃碼關卡與網址不符!");
+				return;
+			}
+		} catch (e) {
+			
+			alert("掃碼網址錯誤!");
+			return;
+		}
+	  	
+	  	var url =decodedText+"/"+phone;
 		
+		
+		
+		console.log("conn url:" + url);
 	
 		$.ajax({
 		    url: url,
@@ -92,7 +113,6 @@ function scan(decodedText){
 		    success: function(result){
 				var arr  = decodedText.split("/")
 				var code = arr[arr.length-1];
-				
 				var  index = code.charAt(0);
 				
 				if (result.code ==1) {

@@ -45,14 +45,14 @@
 
                 <div class="list">
                     <ul>
-                        <li id="no1" {{$sign->no1 ? "class=disabled" :""}}><img src="/carnival/public/img/list-1.png"></li>
-                        <li id="no2" {{$sign->no2 ? "class=disabled" :""}}><img src="/carnival/public/img/list-2.png"></li>
-                        <li id="no3" {{$sign->no3 ? "class=disabled" :""}}><img src="/carnival/public/img/list-3.png"></li>
-                        <li id="no4" {{$sign->no4 ? "class=disabled" :""}}><img src="/carnival/public/img/list-4.png"></li>
-                        <li id="no5" {{$sign->no5 ? "class=disabled" :""}}><img src="/carnival/public/img/list-5.png"></li>
-                        <li id="no6" {{$sign->no6 ? "class=disabled" :""}}><img src="/carnival/public/img/list-6.png"></li>
-                        <li id="no7" {{$sign->no7 ? "class=disabled" :""}}><img src="/carnival/public/img/list-7.png"></li>
-                        <li id="no8" {{$sign->no8 ? "class=disabled" :""}}><img src="/carnival/public/img/list-8.png"></li>
+                        <li id="no1" {{$sign->no1 ? "class=disabled" :""}}><img no="1" src="/carnival/public/img/list-1.png"></li>
+                        <li id="no2" {{$sign->no2 ? "class=disabled" :""}}><img no="2" src="/carnival/public/img/list-2.png"></li>
+                        <li id="no3" {{$sign->no3 ? "class=disabled" :""}}><img no="3" src="/carnival/public/img/list-3.png"></li>
+                        <li id="no4" {{$sign->no4 ? "class=disabled" :""}}><img no="4" src="/carnival/public/img/list-4.png"></li>
+                        <li id="no5" {{$sign->no5 ? "class=disabled" :""}}><img no="5" src="/carnival/public/img/list-5.png"></li>
+                        <li id="no6" {{$sign->no6 ? "class=disabled" :""}}><img no="6" src="/carnival/public/img/list-6.png"></li>
+                        <li id="no7" {{$sign->no7 ? "class=disabled" :""}}><img no="7" src="/carnival/public/img/list-7.png"></li>
+                        <li id="no8" {{$sign->no8 ? "class=disabled" :""}}><img no="8" src="/carnival/public/img/list-8.png"></li>
                     </ul>
                 </div>
             </section>
