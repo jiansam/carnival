@@ -19,17 +19,61 @@ class PageController extends Controller
    ];
 
 
+
+
+   public function managerConvert(Request $req, $type ,$phone)
+   {
+       $sign =  Sign::where('phone' , $phone)->first();
+
+       if (!$sign) {
+           return response()->json([
+               "code"=> 0,
+               "message"=> "此手機號碼無登入資料!",
+           ])->setEncodingOptions(JSON_UNESCAPED_UNICODE);
+
+       }
+
+       if (!isset(PageController::TYPES[$type])) {
+           return response()->json([
+               "code"=> 0,
+               "message"=> "代碼類別錯誤!",
+           ])->setEncodingOptions(JSON_UNESCAPED_UNICODE);
+
+       }
+
+       $tindex =PageController::TYPES[$type];
+
+
+        /*
+       if ($sign->{"no$tindex"} ==1) {
+           return response()->json([
+               "code"=> 0,
+               "message"=> "重複掃碼!",
+           ])->setEncodingOptions(JSON_UNESCAPED_UNICODE);
+       }*/
+
+       $sign->{"no$tindex"} = 1;
+
+       $sign->save();
+
+       // session(['phone'=>$sign]);
+
+       return response()->json([
+           "code"=> 1,
+           "message"=> "掃碼成功",
+       ])->setEncodingOptions(JSON_UNESCAPED_UNICODE);
+
+   }
+
     public function convert(Request $req, $type ,$phone)
     {
-
-        $phone = session('phone');
 
         $sign =  Sign::where('phone' , $phone)->first();
 
         if (!$sign) {
             return response()->json([
                 "code"=> 0,
-                "message"=> "登入已過期，請重新登入!",
+                "message"=> "此手機號碼無登入資料!",
             ])->setEncodingOptions(JSON_UNESCAPED_UNICODE);
 
         }
@@ -146,5 +190,10 @@ class PageController extends Controller
     public function map(Request $req)
     {
         return view("map");
+    }
+
+    public function manager(Request $req)
+    {
+        return view("manager");
     }
 }
