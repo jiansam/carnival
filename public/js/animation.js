@@ -33,7 +33,7 @@ const qrCodeSuccessCallback = (decodedText, decodedResult) => {
 		
 	//alert("scan text :" + decodedText+"/phone");
 	
-	scan(decodedText);
+	scan(no , decodedText);
 	
 	/*
 	var url =decodedText+"/phone";
@@ -48,6 +48,8 @@ const qrCodeSuccessCallback = (decodedText, decodedResult) => {
 $('#gift-button').click(function () {
 	var status = $(this).attr("class");
 	if (status == "" || status=="disabled") return;
+	
+	no =9;
 	
 	const config = { fps: 10, qrbox: { width: 500, height: 400 } };
 
