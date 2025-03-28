@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>2025 新北平安護你行親子嘉年華</title>
     <link rel="shortcut icon" href="/carnival/public//carnival/public/img/favicon.ico" type="/carnival/public/img/favicon.ico" />
     <!-- Layout -->
@@ -20,12 +21,13 @@
                 <span></span>
                 <span></span>
             </button>
-            <!-- 已經兌換 class="default"; 已兌換 class="disabled" -->
-            <!-- 可兌換 class="default"; 已兌換 class="default" -->
-            <!-- 不可兌換 class="default"; 已兌換 class="" -->
-            <button id="gift-button" class="default"></button>
+            <!-- 已經兌換  class="disabled" -->
+            <!-- 可兌換   class="default" -->
+            <!-- 不可兌換  class="" -->
+            <button id="gift-button" class="{{$status}}"  ></button>
             <nav>
                 <ul>
+                	<li><a href="index">首頁</a></li>
                     <li><a href="level">闖關關卡</a></li>
                     <li><a href="map">園區地圖</a></li>
                     <li><a href="programme">舞台節目表</a></li>
@@ -56,45 +58,23 @@
             </section>
         </main>
 
-        <!--
-		<div class="popUp_qrcode" >
-            <div class="popUp--container">
-
-        	</div>
-         </div>
-         -->
 
         <!-- pop up -->
         <div class="popUp" >
             <div class="popUp--container">
                 <h3>請掃描 QRCode</h3>
 				<div id="qr-reader" ></div>
+				<br>
 			    <button class="btn">關閉</button>
             </div>
         </div>
     </div>
 
     <!-- jQuery -->
+    <script type="text/javascript"> var phone ='{{$sign->phone}}';</script>
     <script src="/carnival/public/js/jquery.min.js"></script>
-
     <script src="/carnival/public/js/html5-qrcode.min.js"></script>
     <script src="/carnival/public/js/animation.js"></script>
-    <script type="text/javascript">
-
-		var phone ='{{$sign->phone}}';
-
-		function test(){
-			var decodedText = "http://127.0.0.1/carnival/convert/12fbd294-cea7-7918-732c-331fef15e4b4";
-    		var url =decodedText+"/"+phone;
-
-    		console.log("scan url"+= url);
-
-    		$.post(url ,function(result) {
-
-
-    		});
-		}
-    </script>
 </body>
 
 </html>

@@ -22,6 +22,7 @@
             </button>
             <nav>
                 <ul>
+                 	<li><a href="index">首頁</a></li>
                     <li><a href="level">闖關關卡</a></li>
                     <li><a href="map">園區地圖</a></li>
                     <li><a href="programme">舞台節目表</a></li>
@@ -64,7 +65,7 @@
 				return;
 			}
 
-			const taiwanMobileRegex = /^09[1-9]\d{7}$/;
+			const taiwanMobileRegex = /^09[0-9]\d{7}$/;
 			if (!taiwanMobileRegex.test(phone)) {
 				 alert("手機號碼格式錯誤！");
 				 $("#phone").focus();

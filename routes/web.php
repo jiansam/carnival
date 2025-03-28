@@ -19,7 +19,7 @@ Route::get('qrcode', function(){
     return view("index_qrcode");
 });
 
-Route::get('convert/{type}/{phone}', [PageController::class, "convert"]);
+Route::post('convert/{type}/{phone}', [PageController::class, "convert"]);
 Route::post('toLevel', [PageController::class, "toLevel"]);
 
 Route::get('index', [PageController::class, "index"]);

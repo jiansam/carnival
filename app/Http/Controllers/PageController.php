@@ -21,8 +21,10 @@ class PageController extends Controller
 
     public function convert(Request $req, $type ,$phone)
     {
-       // dd($type, $phone);
-        $sign = session('phone');
+
+        $phone = session('phone');
+
+        $sign =  Sign::where('phone' , $phone)->first();
 
         if (!$sign) {
             return response()->json([
@@ -44,17 +46,45 @@ class PageController extends Controller
 
         //dd(PageController::TYPES[$type] , $tindex);
 
+        if ($sign->{"no$tindex"} ==1) {
+            return response()->json([
+                "code"=> 0,
+                "message"=> "重複掃碼!",
+            ])->setEncodingOptions(JSON_UNESCAPED_UNICODE);
+        }
+
         $sign->{"no$tindex"} = 1;
-        dd($sign);
+
         $sign->save();
 
-        session(['phone'=>$sign]);
+        $status = $this->getStatus($sign);
+
+       // session(['phone'=>$sign]);
 
         return response()->json([
             "code"=> 1,
+            "status"=>$status,
             "message"=> "掃碼成功",
         ])->setEncodingOptions(JSON_UNESCAPED_UNICODE);
 
+    }
+
+
+    public function getStatus($sign){
+        if ($sign->no9 ==1) {
+            return "disabled";
+        }
+
+        $count =0;
+        for ($i = 1; $i <= 8; $i++) {
+            $count += $sign->{"no$i"};
+        }
+
+        if ($count >=6) {
+            return "default";
+        } else {
+            return "";
+        }
     }
 
     public function index(Request $req)
@@ -64,9 +94,9 @@ class PageController extends Controller
         }
 
 
-        $sign = session('phone');
+        $phone = session('phone');
 
-        if ($sign) {
+        if ($phone) {
             return redirect(url("/level?openExternalBrowser=1"));
         }
 
@@ -80,29 +110,32 @@ class PageController extends Controller
         if ($req->phone) { //帶手機號碼進入
             $sign = Sign::where('phone' , $req->phone)->first();
 
-
-
             if (!$sign) {
                 $sign =  new Sign();
                 $sign->phone = $req->phone;
                 $sign->save();
             }
 
-            session(['phone'=>$sign]);
+            session(['phone'=>$req->phone]);
+            return redirect(url("/level"));
         }
-
-        return redirect(url("/level"));
+        return redirect(url("/index?openExternalBrowser=1"));
     }
 
     public function level(Request $req)
     {
-        $sign = session('phone');
-        //dd("level",$sign);
+        $phone = session('phone');
+
+        $sign =  Sign::where('phone' , $phone)->first();
+
         if (!$sign) {
             return redirect(url("/index?openExternalBrowser=1"));
         }
 
-        return view("level" ,["sign" => $sign]);
+
+        $status = $this->getStatus($sign);
+
+        return view("level" ,["sign" => $sign , "status" =>$status]);
     }
 
     public function programme(Request $req)

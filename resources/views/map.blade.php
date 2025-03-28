@@ -24,6 +24,7 @@
             <button id="gift-button" class=""></button>
             <nav>
                 <ul>
+                	<li><a href="index">首頁</a></li>
                     <li><a href="level">闖關關卡</a></li>
                     <li><a href="map">園區地圖</a></li>
                     <li><a href="programme">舞台節目表</a></li>
