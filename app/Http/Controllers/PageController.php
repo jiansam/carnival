@@ -137,12 +137,12 @@ class PageController extends Controller
             return redirect(url("/index?openExternalBrowser=1"));
         }
 
-
+        /*
         $phone = session('phone');
 
         if ($phone) {
             return redirect(url("/level?openExternalBrowser=1"));
-        }
+        }*/
 
         return view("index");
     }
