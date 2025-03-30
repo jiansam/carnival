@@ -108,7 +108,7 @@ function scan(no , decodedText){
 	
 		$.ajax({
 		    url: url,
-		    method: 'get',
+		    method: 'post',
 		    data: {},
 		    headers: {
 		        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
