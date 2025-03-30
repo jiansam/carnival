@@ -34,7 +34,6 @@
             <img src="/carnival/public/img/bg-index.jpg" alt="" class="bg">
             <section>
                 <form id="form" method="get" action="toLevel">
-					@csrf
                     <input id="phone" type="text" maxlength="10" name="phone" oninput="value=value.replace(/[^\d]/g,'')">
                     <img id="btnSend" src="/carnival/public/img/btn-index.png">
                 </form>
