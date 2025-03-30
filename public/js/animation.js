@@ -120,10 +120,10 @@ function scan(no , decodedText){
 				
 				if (result.code ==1) {
 					if (index == 9 ) {
-						$("#no" + 9).attr('class', result.status);
+						$("#gift-button").attr('class', result.status);
 					} else {
 						$("#no" + index).attr('class', 'disabled');
-					    $("#no" + 9).attr('class', result.status);
+					    $("#gift-button").attr('class', result.status);
 					}
 				} 
 				alert(result.message)
