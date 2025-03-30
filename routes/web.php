@@ -19,11 +19,11 @@ Route::get('qrcode', function(){
     return view("index_qrcode");
 });
 
-Route::get('convert/{type}/{phone}', [PageController::class, "convert"]);
-Route::get('manager/{type}/{phone}', [PageController::class, "managerConvert"]);
+Route::post('convert/{type}/{phone}', [PageController::class, "convert"]);
+Route::post('manager/{type}/{phone}', [PageController::class, "managerConvert"]);
 
-Route::get('toLevel', [PageController::class, "toLevel"]);
-Route::get('manager', [PageController::class, "manager"]);
+Route::post('toLevel', [PageController::class, "toLevel"]);
+Route::post('manager', [PageController::class, "manager"]);
 
 Route::get('index', [PageController::class, "index"]);
 Route::get('level', [PageController::class, "level"]);
