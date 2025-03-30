@@ -46,11 +46,6 @@
 
                 <div class="list">
                  	<center>
-                 	<span style="display: block;
-                    	width: 80dvw;
-                    	max-width: 500px;
-                    	font-size: 22px;
-                    	font-weight: 500" >電話:</span>
                  	<input id="phone" type="text" maxlength="10" name="phone" oninput="value=value.replace(/[^\d]/g,'')"
                  		style="display: block;
                     	width: 80dvw;
@@ -63,9 +58,9 @@
                     	border: 6px solid #5796c8;
                     	font-size: 22px;
                     	font-weight: 500"
+                        placeholder="請輸入手機號碼"
                  	>
                  	</center>
-                 	<br>
                     <ul>
                         <li id="no1"><img no="1" type="12fbd294-cea7-7918-732c-331fef15e4b4" src="/carnival/public/img/list-1.png"></li>
                         <li id="no2"><img no="2" type="251af113-5889-92d3-6680-70ae1d472344" src="/carnival/public/img/list-2.png"></li>
