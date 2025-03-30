@@ -19,8 +19,8 @@ Route::get('qrcode', function(){
     return view("index_qrcode");
 });
 
-Route::any('convert/{type}/{phone}', [PageController::class, "convert"]);
-Route::any('manager/{type}/{phone}', [PageController::class, "managerConvert"]);
+Route::get('convert/{type}/{phone}', [PageController::class, "convert"]);
+Route::get('manager/{type}/{phone}', [PageController::class, "managerConvert"]);
 
 Route::post('toLevel', [PageController::class, "toLevel"]);
 Route::get('manager', [PageController::class, "manager"]);
