@@ -196,4 +196,8 @@ class PageController extends Controller
     {
         return view("manager");
     }
+    public function manager9(Request $req)
+    {
+        return view("manager9");
+    }
 }

@@ -24,6 +24,7 @@ Route::get('manager/{type}/{phone}', [PageController::class, "managerConvert"]);
 
 Route::get('toLevel', [PageController::class, "toLevel"]);
 Route::get('manager', [PageController::class, "manager"]);
+Route::get('manager9', [PageController::class, "manager9"]);
 
 Route::get('index', [PageController::class, "index"]);
 Route::get('level', [PageController::class, "level"]);
