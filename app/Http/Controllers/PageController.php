@@ -115,6 +115,9 @@ class PageController extends Controller
 
 
     public function getStatus($sign){
+        //不驗證全部都出現
+        return "default";;
+
         if ($sign->no9 ==1) {
             return "disabled";
         }
